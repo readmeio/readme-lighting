@@ -13,6 +13,8 @@ app.get("/", (req, res) => {
  * parameters:
  * - (body) text {String} The text message you want to display
  * - (body) color {String} What color should the border be?
+ * tags:
+ * - messages
  */
 
 app.post("/message", (req, res) => {

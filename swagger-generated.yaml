@@ -16,6 +16,9 @@
         "summary": "Update the sign message",
         "description": "This will send a message to the Vestaboard to be displayed",
         "parameters": [],
+        "tags": [
+          "messages"
+        ],
         "responses": {
           "200": {
             "description": "Successful response"
@@ -42,5 +45,11 @@
         }
       }
     }
-  }
+  },
+  "tags": [
+    {
+      "name": "messages",
+      "description": "Messages"
+    }
+  ]
 }

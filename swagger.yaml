@@ -7,3 +7,6 @@ servers:
   -
     url: "https://readme.nyc"
 paths: {}
+tags:
+  - name: messages
+    description: Messages
