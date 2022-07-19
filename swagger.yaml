@@ -10,3 +10,9 @@ paths: {}
 tags:
   - name: Messages
     description: Interact with the Vestaboard
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

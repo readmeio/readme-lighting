@@ -5,6 +5,8 @@ const port = parseInt(process.env.PORT || '3000', 10);
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
+const auth = require('./lib/auth');
+
 app.get("/", (req, res) => {
   // Redirect users to the docs!
   res.redirect("https://docs.readme.nyc");
@@ -18,10 +20,12 @@ app.get("/", (req, res) => {
  * - (body) color {String} What color should the border be?
  * tags:
  * - Messages
+ * security:
+ * - ApiKeyAuth: []
  */
 
-app.post("/api/message", (req, res) => {
-  // TODO: Change the Vestasboard!
+app.post("/api/message", auth, (req, res) => {
+  // TODO: Actually change the Vestasboard!
   res.send({ text: req.body.text, color: req.body.color });
 });
 

@@ -19,6 +19,11 @@
         "tags": [
           "Messages"
         ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful response"
@@ -51,5 +56,14 @@
       "name": "Messages",
       "description": "Interact with the Vestaboard"
     }
-  ]
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  }
 }
