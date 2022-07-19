@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = parseInt(process.env.PORT || '3000', 10);
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+
 app.get("/", (req, res) => {
   // Redirect users to the docs!
   res.redirect("https://docs.readme.nyc");
