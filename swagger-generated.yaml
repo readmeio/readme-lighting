@@ -1,0 +1,45 @@
+{
+  "openapi": "3.0.0",
+  "x-api-id": "4f8f39582faaff",
+  "info": {
+    "title": "ReadMe NYC",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://readme.nyc"
+    }
+  ],
+  "paths": {
+    "/message": {
+      "post": {
+        "description": "Update the sign message",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "The text message you want to display"
+                  },
+                  "color": {
+                    "type": "string",
+                    "description": "What color should the border be?"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
