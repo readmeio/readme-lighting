@@ -1,7 +1,9 @@
 openapi: "3.0.0"
 x-api-id: "4f8f39582faaff"
-info: 
-servers: 
-  - 
+info:
+  title: "ReadMe NYC"
+  version: 1.0.0
+servers:
+  -
     url: "https://readme.nyc"
 paths: {}

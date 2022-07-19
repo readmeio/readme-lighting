@@ -8,7 +8,7 @@ app.get("/", (req, res) => {
 });
 
 /* @oas [post] /message
- * description: "Update the sign"
+ * description: Update the sign
  * parameters:
  * - (body) text {String} The text message you want to display
  * - (body) color {String} What color should the border be?
