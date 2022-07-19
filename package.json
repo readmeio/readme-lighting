@@ -1,0 +1,16 @@
+{
+  "name": "vestaboard-api",
+  "version": "1.0.0",
+  "description": "An API to control the Vestaboard!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js",
+    "start": "./node_modules/.bin/nodemon ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
