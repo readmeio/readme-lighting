@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3999;
+const port = parseInt(process.env.PORT || '3000', 10);
 
 app.get("/", (req, res) => {
   // Redirect users to the docs!
