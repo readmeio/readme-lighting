@@ -11,6 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: readmeio/rdme@v7.3.0
+      - uses: readmeio/rdme@7.3.0
         with:
           rdme: openapi [file] --key=README_TOKEN --id=API_DEFINITION_ID
