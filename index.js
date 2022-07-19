@@ -1,10 +1,11 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const port = 3999;
 
-app.get('/', (req, res) => {
-  res.send('Hello! This is an API demo. You can check it out at https://readme.nyc');
-})
+app.get("/", (req, res) => {
+  // Redirect users to the docs!
+  res.redirect("https://docs.readme.nyc");
+});
 
 /* @oas [post] /message
  * description: "Update the sign"
@@ -13,10 +14,11 @@ app.get('/', (req, res) => {
  * - (body) color {String} What color should the border be?
  */
 
-app.post('/message', (req, res) => {
-  res.send({ sent: true });
-})
+app.post("/message", (req, res) => {
+  // TODO: Change the Vestasboard!
+  res.send({ text: req.body.text, color: req.body.color });
+});
 
 app.listen(port, () => {
-  console.log(`Example app running at http://localhost:${port}`)
-})
+  console.log(`API running at http://localhost:${port}`);
+});
