@@ -2,7 +2,7 @@
   "openapi": "3.0.0",
   "x-api-id": "4f8f39582faaff",
   "info": {
-    "title": "ReadMe NYC",
+    "title": "Endpoints",
     "version": "1.0.0"
   },
   "servers": [
@@ -17,7 +17,7 @@
         "description": "This will send a message to the Vestaboard to be displayed",
         "parameters": [],
         "tags": [
-          "messages"
+          "Messages"
         ],
         "responses": {
           "200": {
@@ -48,8 +48,8 @@
   },
   "tags": [
     {
-      "name": "messages",
-      "description": "Messages"
+      "name": "Messages",
+      "description": "Interact with the Vestaboard"
     }
   ]
 }
