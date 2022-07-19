@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://readme.nyc"
+      "url": "https://readme.nyc/api"
     }
   ],
   "paths": {

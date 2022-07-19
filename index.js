@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res.redirect("https://docs.readme.nyc");
 });
 
-/* @oas [post] /api/message
+/* @oas [post] /message
  * summary: Update the sign message
  * description: This will send a message to the Vestaboard to be displayed
  * parameters:
