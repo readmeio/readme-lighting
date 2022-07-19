@@ -10,7 +10,7 @@ app.get("/", (req, res) => {
   res.redirect("https://docs.readme.nyc");
 });
 
-/* @oas [post] /message
+/* @oas [post] /api/message
  * summary: Update the sign message
  * description: This will send a message to the Vestaboard to be displayed
  * parameters:
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
  * - Messages
  */
 
-app.post("/message", (req, res) => {
+app.post("/api/message", (req, res) => {
   // TODO: Change the Vestasboard!
   res.send({ text: req.body.text, color: req.body.color });
 });
