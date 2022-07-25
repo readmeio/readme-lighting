@@ -5,6 +5,10 @@ const readme = require("readmeio");
 
 const auth = require("./lib/auth");
 
+const vesta = require('./lib/vesta');
+
+const request = require('request');
+
 require('dotenv').config();
 
 router.use(auth);
@@ -34,7 +38,14 @@ router.use(
 
 router.post("/message", (req, res) => {
   // TODO: Actually change the Vestasboard!
-  res.send({ text: req.body.text, color: req.body.color });
+  const v = vesta(req.body.color,req.body.text);
+
+  console.log({ form: v.vesta() })
+  request.post('https://rw.vestaboard.com/', { json: v.vesta(), headers: { 'X-Vestaboard-Read-Write-Key': process.env.VESTABOARD }}, (a, b, c) => {
+    console.log(a, b, c);
+    })
+
+  res.send({result: v.api() });
 });
 
 module.exports = router;
