@@ -48,6 +48,23 @@
             }
           }
         }
+      },
+      "delete": {
+        "summary": "Reset sign message",
+        "description": "This will reset the Vestaboard's message",
+        "tags": [
+          "Messages"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
       }
     }
   },
