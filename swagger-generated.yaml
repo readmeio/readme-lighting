@@ -1,15 +1,115 @@
-
-Error validating the API definition! Run with -v to see the invalid definition.
-
-OpenAPI schema validation failed.
-
-REQUIRED must have required property 'required'
-
-  34 |         "description": "This will send a message to the Vestaboard to be displayed",
-  35 |         "parameters": [
-> 36 |           {
-     |           ^ ☹️  required is missing here!
-  37 |             "in": "body",
-  38 |             "name": "color",
-  39 |             "schema": {
-
+{
+  "openapi": "3.0.0",
+  "x-api-id": "4f8f39582faaff",
+  "info": {
+    "title": "Endpoints",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://readme.nyc/api"
+    }
+  ],
+  "paths": {
+    "/message": {
+      "get": {
+        "summary": "Get the current message",
+        "description": "This will return the current message",
+        "tags": [
+          "Messages"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "post": {
+        "summary": "Update the sign message",
+        "description": "This will send a message to the Vestaboard to be displayed",
+        "requestBody": {
+          "description": "Optional description in *Markdown*",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "text",
+                  "color"
+                ],
+                "properties": {
+                  "text": {
+                    "type": "string",
+                    "description": "What text should be displayed?"
+                  },
+                  "color": {
+                    "type": "string",
+                    "enum": [
+                      "red",
+                      "orange",
+                      "yellow",
+                      "green",
+                      "blue",
+                      "violet"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Messages"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Reset sign message",
+        "description": "This will reset the Vestaboard's message",
+        "tags": [
+          "Messages"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Messages",
+      "description": "Interact with the Vestaboard"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  }
+}

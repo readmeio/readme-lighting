@@ -46,15 +46,21 @@ router.get("/message", (req, res) => {
 /* @oas [post] /message
  * summary: Update the sign message
  * description: This will send a message to the Vestaboard to be displayed
- * parameters:
- * - (body) text {String} The text message you want to display
- * - (body) color {String} What color should the border be?
- * - in: body
- *   name: color
- *   schema:
- *     type: string
- *     enum: [red, orange, yellow, green, blue, violet]
- *   description: What color should the border be?
+ * requestBody:
+ *   description: Optional description in *Markdown*
+ *   required: true
+ *   content:
+ *     application/json:
+ *       schema:
+ *         type: object
+ *         required: [text, color]
+ *         properties:
+ *           text:
+ *             type: string
+ *             description: What text should be displayed?
+ *           color:
+ *             type: string
+ *             enum: [red, orange, yellow, green, blue, violet]
  * tags:
  * - Messages
  * security:
