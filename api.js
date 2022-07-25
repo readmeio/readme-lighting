@@ -9,6 +9,8 @@ const vesta = require("./lib/vesta");
 
 const request = require("request");
 
+let current;
+
 require("dotenv").config();
 
 router.use(auth);
@@ -28,6 +30,19 @@ router.use(
   )
 );
 
+/* @oas [get] /message
+ * summary: Get the current message
+ * description: This will return the current message
+ * tags:
+ * - Messages
+ * security:
+ * - ApiKeyAuth: []
+ */
+
+router.get("/message", (req, res) => {
+  res.json({ result: current });
+});
+
 /* @oas [post] /message
  * summary: Update the sign message
  * description: This will send a message to the Vestaboard to be displayed
@@ -43,11 +58,13 @@ router.use(
 router.post("/message", (req, res) => {
   const v = vesta(req.body.color, req.body.text);
 
+  current = v.api();
+
   request.post("https://rw.vestaboard.com/", {
     json: v.vesta(),
     headers: { "X-Vestaboard-Read-Write-Key": process.env.VESTABOARD },
   });
-  res.send({ result: v.api() });
+  res.json({ result: v.api() });
 });
 
 /* @oas [delete] /message
@@ -59,14 +76,14 @@ router.post("/message", (req, res) => {
  * - ApiKeyAuth: []
  */
 
-router.post("/message", (req, res) => {
+router.delete("/message", (req, res) => {
   const v = vesta('blue', 'Post a message here! https://readme.nyc');
 
   request.post("https://rw.vestaboard.com/", {
     json: v.vesta(),
     headers: { "X-Vestaboard-Read-Write-Key": process.env.VESTABOARD },
   });
-  res.send({ result: v.api() });
+  res.json({ result: v.api() });
 });
 
 module.exports = router;

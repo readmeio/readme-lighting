@@ -12,6 +12,23 @@
   ],
   "paths": {
     "/message": {
+      "get": {
+        "summary": "Get the current message",
+        "description": "This will return the current message",
+        "tags": [
+          "Messages"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      },
       "post": {
         "summary": "Update the sign message",
         "description": "This will send a message to the Vestaboard to be displayed",
