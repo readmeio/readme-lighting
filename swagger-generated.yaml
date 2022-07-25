@@ -95,6 +95,25 @@
           }
         }
       }
+    },
+    "/owlfact": {
+      "get": {
+        "summary": "Owl facts",
+        "description": "Get a random, possibly true, owl fact",
+        "tags": [
+          "Fun Facts"
+        ],
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        }
+      }
     }
   },
   "tags": [
