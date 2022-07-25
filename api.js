@@ -49,6 +49,12 @@ router.get("/message", (req, res) => {
  * parameters:
  * - (body) text {String} The text message you want to display
  * - (body) color {String} What color should the border be?
+ * - in: body
+ *   name: color
+ *   schema:
+ *     type: string
+ *     enum: [red, orange, yellow, green, blue, violet]
+ *   description: What color should the border be?
  * tags:
  * - Messages
  * security:
