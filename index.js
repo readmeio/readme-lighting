@@ -11,7 +11,7 @@ const api = require("./api");
 
 app.get("/", (req, res) => {
   // Redirect users to the docs!
-  res.redirect("https://docs.readme.nyc");
+  res.redirect("https://docs.readme.nyc/reference/post_message");
 });
 
 const createApiKey = (email) => {
