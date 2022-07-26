@@ -68,6 +68,13 @@ router.get("/message", (req, res) => {
  */
 
 router.post("/message", (req, res) => {
+  if (!req.body.text) {
+    return res.json(401, { 'error': 'Text is required' });
+  }
+  if (!req.body.color) {
+    return res.json(401, { 'error': 'Color is required' });
+  }
+
   const v = vesta(req.body.color, req.body.text);
 
   current = v.api();
