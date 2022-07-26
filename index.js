@@ -21,7 +21,7 @@ const createApiKey = (email) => {
 
 app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
   const signature = req.headers['readme-signature'];
-  const secret = process.env.README_KEY;
+  const secret = process.env.README_JWT;
 
   try {
     // Verify signature
