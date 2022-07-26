@@ -79,9 +79,14 @@ router.post("/message", (req, res) => {
 
   current = v.api();
 
+  console.log("VESTABOARD", process.env.VESTABOARD);
+
   request.post("https://rw.vestaboard.com/", {
     json: v.vesta(),
     headers: { "X-Vestaboard-Read-Write-Key": process.env.VESTABOARD },
+  }, (a,b,c) => {
+    console.log(v.vesta());
+    console.log(a,b,c);
   });
   res.json({ result: v.api() });
 });
