@@ -30,8 +30,20 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
     return res.sendStatus(401);
   }
 
+  const apiKey = createApiKey(req.body.email);
+
+  // Why did this only work with the keys array? 
+  // Why is id required? Is it required?
+  // Should we do something better if name isn't passed in?
   return res.json({
-    apiKey: createApiKey(req.body.email),
+    email: req.body.email,
+    keys: [
+      {
+        apiKey, 
+        id: apiKey, 
+        name: req.body.email
+      }
+    ]
   });
 });
 
