@@ -37,3 +37,6 @@ npm-debug.log
 .env-*
 
 TODO.md
+
+# The generated OpenAPI file
+openapi.json
