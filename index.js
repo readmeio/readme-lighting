@@ -11,7 +11,12 @@ const api = require("./api");
 
 app.get("/", (req, res) => {
   // Redirect users to the docs!
-  res.redirect("https://docs.readme.nyc/reference/post_message");
+  res.redirect("https://docs.readme.nyc/reference");
+});
+
+app.get("/login", (req, res) => {
+  // Redirect users to the docs!
+  res.redirect("https://docs.readme.nyc/login");
 });
 
 const createApiKey = (email) => {
