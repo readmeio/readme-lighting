@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const port = parseInt(process.env.PORT || "3999", 10);
 
-const readme = require('readmeio');
+const readme = require("readmeio");
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
@@ -15,12 +15,12 @@ app.get("/", (req, res) => {
 });
 
 const createApiKey = (email) => {
-  const hash = Buffer.from(email.trim()).toString('base64').replace(/=/g, '');
+  const hash = Buffer.from(email.trim()).toString("base64").replace(/=/g, "");
   return `rdme_nyc_${hash}`;
 };
 
-app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
-  const signature = req.headers['readme-signature'];
+app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
+  const signature = req.headers["readme-signature"];
   const secret = process.env.README_JWT;
 
   try {
@@ -32,18 +32,18 @@ app.post('/webhook', express.raw({ type: 'application/json' }), (req, res) => {
 
   const apiKey = createApiKey(req.body.email);
 
-  // Why did this only work with the keys array? 
+  // Why did this only work with the keys array?
   // Why is id required? Is it required?
   // Should we do something better if name isn't passed in?
   return res.json({
     email: req.body.email,
     keys: [
       {
-        apiKey, 
-        id: apiKey, 
-        name: req.body.email
-      }
-    ]
+        apiKey,
+        id: apiKey,
+        name: req.body.email,
+      },
+    ],
   });
 });
 
