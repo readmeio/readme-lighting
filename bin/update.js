@@ -27,7 +27,7 @@ const phrases = [
  */
 
 function update() {
-  console.log('running scheduled board update!')
+  console.log("running scheduled board update");
   const color = colors[Math.floor(Math.random() * colors.length)];
   const phrase = phrases[Math.floor(Math.random() * phrases.length)];
   const v = vesta(color, `${phrase} https://readme.nyc`);
