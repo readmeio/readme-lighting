@@ -1,5 +1,4 @@
-# For info on getting the latest rdme version and obtaining your API_DEFINITION_ID,
-# see our docs: https://docs.readme.com/docs/rdme#example-syncing-an-openapi-definition
+# Check out our GitHub Action docs: https://docs.readme.com/docs/rdme
 
 name: Sync OAS to ReadMe
 on:
@@ -11,6 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate OpenAPI file
+        run: npm run oas
+      # rdme will discover openapi.json and upload it!
       - uses: readmeio/rdme@7.3.0
         with:
-          rdme: openapi swagger-generated.yaml --key=${{ secrets.README_TOKEN }} --id=${{ secrets.API_DEFINITION_ID }}
+          rdme: openapi --key=${{ secrets.README_TOKEN }} --id=${{ secrets.API_DEFINITION_ID }}
