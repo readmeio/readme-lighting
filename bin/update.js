@@ -2,18 +2,8 @@ const vesta = require("../lib/vesta");
 
 const request = require("request");
 
-const colors = [
-  "red",
-  "orange",
-  "yellow",
-  "green",
-  "blue",
-  "blue",
-  "blue",
-  "blue",
-  "blue",
-  "violet",
-];
+const colors = ["blue"];
+
 const phrases = [
   "Post a message here!",
   "Hello apidays NYC!",
