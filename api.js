@@ -60,7 +60,7 @@ router.get("/message", (req, res) => {
  *             description: What text should be displayed?
  *           color:
  *             type: string
- *             enum: [red, orange, yellow, green, blue, violet]
+ *             enum: [rainbow, red, orange, yellow, green, blue, violet, black, white]
  * tags:
  * - Messages
  * security:
