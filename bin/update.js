@@ -5,11 +5,12 @@ const request = require("request");
 const colors = ["blue"];
 
 const phrases = [
-  "Post a message here!",
   "Hello apidays NYC!",
   "Hello New York City!",
-  "If you're looking for a sign to talk to us, here it is",
+  "Post a message here!",
+  "Happy Friday Lite, y'all!",
   "Concrete jungle where dreams are made of",
+  "If you're looking for a sign to talk to us, here it is",
 ];
 
 /**
