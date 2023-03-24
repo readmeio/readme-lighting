@@ -14,7 +14,6 @@ jobs:
         run: npm ci
       - name: Generate OpenAPI file
         run: npm run oas
-      # rdme will discover openapi.json and upload it!
       - uses: readmeio/rdme@v8
         with:
-          rdme: openapi --key=${{ secrets.README_TOKEN }} --id=${{ secrets.API_DEFINITION_ID }}
+          rdme: openapi openapi.json --key=${{ secrets.README_TOKEN }} --id=${{ secrets.API_DEFINITION_ID }}
