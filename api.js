@@ -35,7 +35,7 @@ router.use(
  * - ApiKeyAuth: []
  */
 router.get('/themes', (req, res) => {
-  request.get('https://apimixtape.ngrok.dev/api/themes', (err, response, body) => {
+  request.get('https://apimixtape.ngrok.io/api/themes', (err, response, body) => {
     res.json(JSON.parse(body));
   });
 });
@@ -49,7 +49,7 @@ router.get('/themes', (req, res) => {
  * - ApiKeyAuth: []
  */
 router.get('/theme/:name', (req, res) => {
-  request.get(`https://apimixtape.ngrok.dev/api/themes/${req.params.name}`, (err, response, body) => {
+  request.get(`https://apimixtape.ngrok.io/api/themes/${req.params.name}`, (err, response, body) => {
     res.json(JSON.parse(body));
   });
 });
@@ -82,7 +82,7 @@ router.post('/theme', (req, res) => {
     });
   }
 
-  request.post("https://apimixtape.ngrok.dev/api/change", {
+  request.post("https://apimixtape.ngrok.io/api/change", {
     json: {
       theme: req.body.theme,
     }
