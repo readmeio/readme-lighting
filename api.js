@@ -48,13 +48,13 @@ router.get('/themes', (req, res) => {
  * security:
  * - ApiKeyAuth: []
  */
-router.get('/theme/:name', (req, res) => {
+router.get('/themes/:name', (req, res) => {
   request.get(`https://apimixtape.ngrok.dev/api/themes/${req.params.name}`, (err, response, body) => {
     res.json(JSON.parse(body));
   });
 });
 
-/* @oas [post] /theme
+/* @oas [post] /themes
  * summary: Change the theme
  * description: This will update the lights to the provided theme
  * requestBody:
@@ -75,7 +75,7 @@ router.get('/theme/:name', (req, res) => {
  * security:
  * - ApiKeyAuth: []
  */
-router.post('/theme', (req, res) => {
+router.post('/themes', (req, res) => {
   request.post("https://apimixtape.ngrok.dev/api/change", {
     json: {
       theme: req.body.theme,
