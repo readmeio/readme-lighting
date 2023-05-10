@@ -5,11 +5,7 @@ const readme = require("readmeio");
 
 const auth = require("./lib/auth");
 
-const vesta = require("./lib/vesta");
-
 const request = require("request");
-
-let current;
 
 require("dotenv").config();
 
@@ -30,22 +26,37 @@ router.use(
   )
 );
 
-/* @oas [get] /message
- * summary: Get the current message
- * description: This will return the current message
+/* @oas [get] /themes
+ * summary: Get the list of available themes
+ * description: This will return all available themes for the lights
  * tags:
- * - Messages
+ * - Lights
  * security:
  * - ApiKeyAuth: []
  */
-
-router.get("/message", (req, res) => {
-  res.json({ result: current });
+router.get('/themes', (req, res) => {
+  request.get('https://apimixtape.ngrok.dev/api/themes', (err, response, body) => {
+    res.json(JSON.parse(body));
+  });
 });
 
-/* @oas [post] /message
- * summary: Update the sign message
- * description: This will send a message to the Vestaboard to be displayed
+/* @oas [get] /themes/:name
+ * summary: Return details for specific theme
+ * description: This will return the settings for a provided theme
+ * tags:
+ * - Lights
+ * security:
+ * - ApiKeyAuth: []
+ */
+router.get('/theme/:name', (req, res) => {
+  request.get(`https://apimixtape.ngrok.dev/api/themes/${req.params.name}`, (err, response, body) => {
+    res.json(JSON.parse(body));
+  });
+});
+
+/* @oas [post] /theme
+ * summary: Change the theme
+ * description: This will update the lights to the provided theme
  * requestBody:
  *   description: Optional description in *Markdown*
  *   required: true
@@ -53,57 +64,26 @@ router.get("/message", (req, res) => {
  *     application/json:
  *       schema:
  *         type: object
- *         required: [text, color]
+ *         required: [theme]
  *         properties:
- *           text:
+ *           theme:
  *             type: string
- *             description: What text should be displayed?
- *           color:
- *             type: string
- *             enum: [rainbow, red, orange, yellow, green, blue, violet, black, white]
+ *             description: What theme should be displayed?
+ *             enum: [america, amy, ashley, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, shreyasi, slack, spring, warriors]
  * tags:
- * - Messages
+ * - Lights
  * security:
  * - ApiKeyAuth: []
  */
-
-router.post("/message", (req, res) => {
-  if (!req.body.text) {
-    return res.status(400).json({ error: "Text is required" });
-  }
-  if (!req.body.color) {
-    return res.status(400).json({ error: "Color is required" });
-  }
-
-  const v = vesta(req.body.color, req.body.text);
-
-  current = v.api();
-
-  request.post("https://rw.vestaboard.com/", {
-    json: v.vesta(),
-    headers: { "X-Vestaboard-Read-Write-Key": process.env.VESTABOARD },
-  });
-  res.json({ result: v.api() });
-});
-
-/* @oas [delete] /message
- * summary: Reset sign message
- * description: This will reset the Vestaboard's message
- * tags:
- * - Messages
- * security:
- * - ApiKeyAuth: []
- */
-
-router.delete("/message", (req, res) => {
-  const v = vesta("blue", "Post a message here! https://readme.nyc");
-
-  request.post("https://rw.vestaboard.com/", {
-    json: v.vesta(),
-    headers: { "X-Vestaboard-Read-Write-Key": process.env.VESTABOARD },
-  });
-  res.json({ result: v.api() });
-});
+router.post('/theme', (req, res) => {
+  request.post("https://apimixtape.ngrok.dev/api/change", {
+    json: {
+      theme: req.body.theme,
+    }
+  }, (err, response, body) => {
+    res.json(body);
+  }); 
+})
 
 /* @oas [get] /owlfact
  * summary: Owl facts
