@@ -69,20 +69,26 @@ router.get('/theme/:name', (req, res) => {
  *           theme:
  *             type: string
  *             description: What theme should be displayed?
- *             enum: [america, amy, ashley, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, shreyasi, slack, spring, warriors]
+ *             enum: [colorful, blue, red, green, orange, america, amy, ashley, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, shreyasi, slack, spring, warriors]
  * tags:
  * - Lights
  * security:
  * - ApiKeyAuth: []
  */
 router.post('/theme', (req, res) => {
+  if (req.body.theme === "blurple") {
+    return res.json({
+      error: "This is not a valid theme",
+    });
+  }
+
   request.post("https://apimixtape.ngrok.dev/api/change", {
     json: {
       theme: req.body.theme,
     }
   }, (err, response, body) => {
     res.json(body);
-  }); 
+  });
 })
 
 /* @oas [get] /owlfact
