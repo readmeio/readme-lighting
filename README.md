@@ -1,6 +1,6 @@
-# ReadMe @ apidays NYC 🗽
+# ReadMe @ API Mixtape 🎶
 
-This is a small Express app that controls the Vestaboard at [apidays NYC 2022](https://www.apidays.global/new-york/).
+This is a small Express app that controls the lights at API Mixtape.
 
 To generate the OpenAPI file locally, first install the project dependencies:
 

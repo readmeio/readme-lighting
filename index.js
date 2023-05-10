@@ -11,17 +11,17 @@ const api = require("./api");
 
 app.get("/", (req, res) => {
   // Redirect users to the docs!
-  res.redirect("https://docs.readme.nyc/reference");
+  res.redirect("https://docs.readme.lighting/reference");
 });
 
 app.get("/login", (req, res) => {
   // Redirect users to the docs!
-  res.redirect("https://docs.readme.nyc/login");
+  res.redirect("https://docs.readme.lighting/login");
 });
 
 const createApiKey = (email) => {
   const hash = Buffer.from(email.trim()).toString("base64").replace(/=/g, "");
-  return `rdme_nyc_${hash}`;
+  return `rdme_lights_${hash}`;
 };
 
 app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
