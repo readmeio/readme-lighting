@@ -40,9 +40,15 @@ router.get('/themes', (req, res) => {
   });
 });
 
-/* @oas [get] /themes/:name
+/* @oas [get] /themes/{name}
  * summary: Return details for specific theme
  * description: This will return the settings for a provided theme
+ * parameters:
+ *  - name: name
+    in: path
+    required: true
+    schema:
+      type: string
  * tags:
  * - Lights
  * security:
