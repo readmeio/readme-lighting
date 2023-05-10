@@ -36,7 +36,7 @@ router.use(
  */
 router.get('/themes', (req, res) => {
   request.get('https://apimixtape.ngrok.io/api/themes', (err, response, body) => {
-    res.json(JSON.parse(body));
+    res.status(response.statusCode).json(JSON.parse(body));
   });
 });
 
@@ -48,13 +48,14 @@ router.get('/themes', (req, res) => {
  * security:
  * - ApiKeyAuth: []
  */
-router.get('/theme/:name', (req, res) => {
+router.get('/themes/:name', (req, res) => {
   request.get(`https://apimixtape.ngrok.io/api/themes/${req.params.name}`, (err, response, body) => {
-    res.json(JSON.parse(body));
+    console.log(response.statusCode)
+    res.status(response.statusCode).json(JSON.parse(body));
   });
 });
 
-/* @oas [post] /theme
+/* @oas [post] /themes
  * summary: Change the theme
  * description: This will update the lights to the provided theme
  * requestBody:
@@ -75,7 +76,7 @@ router.get('/theme/:name', (req, res) => {
  * security:
  * - ApiKeyAuth: []
  */
-router.post('/theme', (req, res) => {
+router.post('/themes', (req, res) => {
   if (req.body.theme === "blurple") {
     return res.json({
       error: "This is not a valid theme",
@@ -87,7 +88,7 @@ router.post('/theme', (req, res) => {
       theme: req.body.theme,
     }
   }, (err, response, body) => {
-    res.json(body);
+    res.status(response.statusCode).json(body);
   });
 })
 
