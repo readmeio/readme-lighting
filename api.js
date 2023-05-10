@@ -86,8 +86,14 @@ router.post('/themes', (req, res) => {
   if (req.body.theme === "blurple") {
     return res.json({
       error: "This is not a valid theme",
+      docs: "https://docs.readme.lighting/reference/post_themes?shareId=75eUyijgaLYhufv9YFwT"
     });
   }
+  // This is just for the demo
+  return res.json({
+    success: true,
+    theme: req.body.theme,
+  });
 
   request.post("https://apimixtape.ngrok.io/api/change", {
     json: {
