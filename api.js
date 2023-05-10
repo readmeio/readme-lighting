@@ -76,7 +76,7 @@ router.get('/themes/:name', (req, res) => {
  *           theme:
  *             type: string
  *             description: What theme should be displayed?
- *             enum: [colorful, blue, red, green, orange, america, amy, ashley, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, shreyasi, slack, spring, warriors]
+ *             enum: [colorful, blue, red, green, orange, america, amy, ashley, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, shreyasi, slack, spring, warriors, blurple]
  * tags:
  * - Lights
  * security:
