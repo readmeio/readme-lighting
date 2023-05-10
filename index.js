@@ -21,7 +21,7 @@ app.get("/login", (req, res) => {
 
 const createApiKey = (email) => {
   const hash = Buffer.from(email.trim()).toString("base64").replace(/=/g, "");
-  return `rdme_lights_${hash}`;
+  return `rdme_lighting_${hash}`;
 };
 
 app.post("/webhook", express.raw({ type: "application/json" }), (req, res) => {
