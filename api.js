@@ -84,7 +84,7 @@ router.get('/themes/:name', (req, res) => {
  */
 router.post('/themes', (req, res) => {
   if (req.body.theme === "blurple") {
-    return res.json({
+    return res.status(404).json({
       error: "This is not a valid theme",
       docs: "https://docs.readme.lighting/reference/post_themes?shareId=75eUyijgaLYhufv9YFwT"
     });
