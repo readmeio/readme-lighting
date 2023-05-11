@@ -75,6 +75,7 @@ router.get('/themes/:name', (req, res) => {
  *         properties:
  *           theme:
  *             type: string
+ *             default: colorful
  *             description: What theme should be displayed?
  *             enum: [colorful, blue, america, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, slack, spring, warriors]
  * tags:
@@ -90,9 +91,14 @@ router.post('/themes', (req, res) => {
     });
   }
 
+  let theme = req.body.theme;
+  if (!theme) {
+    theme = 'colorful';
+  }
+
   request.post("https://apimixtape.ngrok.io/api/change", {
     json: {
-      theme: req.body.theme,
+      theme,
     }
   }, (err, response, body) => {
     res.status(response.statusCode).json(body);
