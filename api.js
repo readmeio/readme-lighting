@@ -76,7 +76,7 @@ router.get('/themes/:name', (req, res) => {
  *           theme:
  *             type: string
  *             description: What theme should be displayed?
- *             enum: [colorful, blue, red, green, orange, america, amy, ashley, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, shreyasi, slack, spring, warriors, blurple]
+ *             enum: [colorful, blue, america, christmas, facebook, fire, gitlab, lyft, mixtape, office, pastel, readme, scale, segment, slack, spring, warriors]
  * tags:
  * - Lights
  * security:
@@ -89,11 +89,6 @@ router.post('/themes', (req, res) => {
       docs: "https://docs.readme.lighting/reference/post_themes?shareId=75eUyijgaLYhufv9YFwT"
     });
   }
-  // This is just for the demo
-  return res.json({
-    success: true,
-    theme: req.body.theme,
-  });
 
   request.post("https://apimixtape.ngrok.io/api/change", {
     json: {
