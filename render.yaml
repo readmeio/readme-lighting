@@ -1,0 +1,16 @@
+# Configures the readme-nyc service in Render.
+
+services:
+  - name: readme-nyc
+    type: web
+    runtime: node
+    buildCommand: npm ci
+    startCommand: npm start
+    region: oregon
+    # Starter plan includes ½ CPU and 512 MB memory, and costs $7 per month
+    plan: starter
+    numInstances: 1
+    domains:
+      - readme.nyc
+    autoDeploy: true  # Deploys from `main`, where the Render Blueprint syncs from
+    envVars: []  # See the Render web dashboard for secrets
